@@ -1,0 +1,46 @@
+<form [formGroup]="catalogueForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Newspaper</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item position="floating">
+        <ion-label>Name:</ion-label>
+        <ion-input type="text" id="newspaper-name" formControlName="newspaperName"></ion-input>
+      </ion-item>
+      <ion-item position="floating">
+        <ion-label>Number:</ion-label>
+        <ion-input type="Number" id="newspaper-number" formControlName="newspaperNumber"></ion-input>
+      </ion-item>
+      <ion-item position="floating">
+        <ion-label>Release date:</ion-label>
+        <ion-input type="text" id="newspaper-release-date" formControlName="newspaperReleaseDate"></ion-input>
+      </ion-item>
+      <ion-item position="floating">
+        <ion-label>Page number:</ion-label>
+        <ion-input type="Number" id="nuwspaper-page-number" formControlName="newspaperPageNum"></ion-input>
+      </ion-item>
+      <ion-card formArrayName="articles">
+        <ion-card-header>
+          <ion-card-title>Articles</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button (click)="addArticle()" expand="block" fill="clear" shape="round">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Add article
+          </ion-button>
+          <ion-item *ngFor="let article of getControles(); let i = index">
+            <ion-input type="text" placeholder="Article name" formControlName={{i}}></ion-input>
+            <ion-button (click)="deleteArticle(i)" expand="block" fill="clear" shape="round">
+              <ion-icon slot="start" name="trash"></ion-icon>
+              Delete
+            </ion-button>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+  <ion-button type="submit" expand="block" fill="outline" [disabled]="!catalogueForm.valid"]>
+    Submit
+  </ion-button>
+</form>
