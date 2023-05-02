@@ -15,8 +15,9 @@ import { MyformModule } from '../myform/myform.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    MyformModule,
+    MyformModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  exports: [HomePage]
 })
 export class HomePageModule {}

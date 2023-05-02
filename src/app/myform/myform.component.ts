@@ -2,45 +2,66 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewspaperCatalogue } from './Class/newspaper_cataloge';
 import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
+import { AlertController } from '@ionic/angular';
+import dateValidator from './service/dateValidator';
+import { ValidatorDateServiceService } from '../services/validator-date-service.service';
 
 @Component({
   selector: 'app-myform',
   templateUrl: './myform.component.html',
   styleUrls: ['./myform.component.scss'],
 })
-export class MyformComponent  implements OnInit {
+export class MyformComponent implements OnInit {
 
-  catalogueForm!:FormGroup;
-  catalogue!:NewspaperCatalogue;
-  releaseDataPattern = "^[0-9]{2}-[0-9]{2}-[0-9]{4}$";
-  
-  constructor(private fb: FormBuilder) { 
+  catalogueForm!: FormGroup;
+  catalogue!: NewspaperCatalogue;
+  constructor(private fb: FormBuilder, private alertController: AlertController) {
     this.catalogueForm = this.fb.group({
-      newspaperName:['',[Validators.required]],
-      newspaperNumber:['',[Validators.required]],
-      newspaperReleaseDate:['',[Validators.pattern(this.releaseDataPattern)]],
-      newspaperPageNum:[''],
-      articles:new FormArray([new FormControl()])
+      newspaperName: ['', [Validators.required]],
+      newspaperNumber: ['', [Validators.required]],
+      newspaperReleaseDate: ['', [dateValidator()]],
+      newspaperPageNum: [''],
+      articles: new FormArray([new FormControl()])
     })
   }
-  addArticle()
-  {
+  addArticle() {
     console.log('Add');
     (this.catalogueForm.controls['articles'] as FormArray).push(new FormControl());
   }
 
-  deleteArticle(i:any)
-  {
+  deleteArticle(i: any) {
     console.log('Delete');
     (this.catalogueForm.controls['articles'] as FormArray).removeAt(i);
   }
-  getControles(){
+  getControles() {
     return (this.catalogueForm.get('articles') as FormArray).controls;
   }
-  onSubmit()
-  {
-    console.log('Submit');
-
+  onSubmit() {
+    let date = this.catalogueForm.value.newspaperPageNum;
+    let dateValidator = new ValidatorDateServiceService();
+    if (dateValidator.validate_date(date)) {
+      this.catalogue = new NewspaperCatalogue(
+        this.catalogueForm.value.newspaperName,
+        this.catalogueForm.value.newspaperNumber,
+        this.catalogueForm.value.newspaperReleaseDate,
+        this.catalogueForm.value.newspaperPageNum
+      );
+    }
+    else {
+      this.dateAlert("The release date can't be future!");
+    }
   }
-  ngOnInit() {}
+  ngOnInit() { }
+
+  async dateAlert(message: string) {
+    const alert = await this.alertController.create(
+      {
+        header: 'Error',
+        subHeader: '',
+        message: message,
+        buttons: ['OK']
+      }
+    );
+    await alert.present();
+  }
 }
