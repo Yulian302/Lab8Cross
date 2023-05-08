@@ -1,0 +1,21 @@
+<app-myform (newspaperAdd)="addNewspaper($event)"></app-myform>
+<ion-card *ngFor="let newspaper of newspapers; let i=index">
+  <ion-card-header>
+    <ion-card-title>Title:{{newspaper.name}}</ion-card-title>
+    <ion-card-subtitle>Number:{{newspaper.num}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    Page number:
+    {{newspaper.page_num}}
+    Release date:
+    {{newspaper.release_date}}
+    <h1>Articles</h1>
+    <ion-item *ngFor="let article of newspaper.articles">
+      {{article}}
+    </ion-item>
+  </ion-card-content>
+  <ion-button (click)="update()" expand="block" fill="clear" shape="round">
+    Edit
+  </ion-button>
+  <app-updateform [newspaper]="newspaper" [show]="show_update" *ngIf="show_update" (showChange)="showUp($event)" (newspaperChange)="update_save($event,i)"></app-updateform>
+</ion-card>

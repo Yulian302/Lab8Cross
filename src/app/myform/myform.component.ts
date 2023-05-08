@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewspaperCatalogue } from './Class/newspaper_cataloge';
-import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
 import { AlertController } from '@ionic/angular';
 import dateValidator from './service/dateValidator';
 import { ValidatorDateServiceService } from '../services/validator-date-service.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-myform',
@@ -12,9 +12,9 @@ import { ValidatorDateServiceService } from '../services/validator-date-service.
   styleUrls: ['./myform.component.scss'],
 })
 export class MyformComponent implements OnInit {
-
   catalogueForm!: FormGroup;
   catalogue!: NewspaperCatalogue;
+  @Output() newspaperAdd: EventEmitter<NewspaperCatalogue> = new EventEmitter<NewspaperCatalogue>();
   constructor(private fb: FormBuilder, private alertController: AlertController) {
     this.catalogueForm = this.fb.group({
       newspaperName: ['', [Validators.required]],
@@ -55,7 +55,7 @@ export class MyformComponent implements OnInit {
     else {
       this.dateAlert("The release date can't be future!");
     }
-
+    this.newspaperAdd.emit(this.catalogue);
   }
   ngOnInit() { }
 
