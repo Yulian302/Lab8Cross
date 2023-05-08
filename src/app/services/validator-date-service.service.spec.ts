@@ -23,7 +23,6 @@ describe('ValidatorDateServiceService', () => {
   });
   it('string to date validate: 15.02.2010 to date',()=>{
     let str_date = stringToDate('15.02.2010');
-    console.log(str_date);
     let date = new Date('2010.02.15');
     expect(str_date).toEqual(date);
   });

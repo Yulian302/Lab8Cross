@@ -6,8 +6,7 @@ import { Injectable } from '@angular/core';
 export class ValidatorDateServiceService {
 
   validate_date(value: string) {
-    let arrD: String[] = [];
-    arrD = value.split(/[.-/]/);
+    let arrD: string[] = value.split(/[.-/]/);
     let arrDate: number[] = [];
     arrD.forEach((el) => {
       arrDate.push(Number(el));

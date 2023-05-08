@@ -18,9 +18,9 @@ export class MyformComponent implements OnInit {
   constructor(private fb: FormBuilder, private alertController: AlertController) {
     this.catalogueForm = this.fb.group({
       newspaperName: ['', [Validators.required]],
-      newspaperNumber: ['', [Validators.required]],
+      newspaperNumber: ['', [Validators.required, Validators.min(0)]],
       newspaperReleaseDate: ['', [dateValidator()]],
-      newspaperPageNum: [''],
+      newspaperPageNum: ['', [Validators.required, Validators.min(1)]],
       articles: new FormArray([new FormControl()])
     })
   }
@@ -37,19 +37,25 @@ export class MyformComponent implements OnInit {
     return (this.catalogueForm.get('articles') as FormArray).controls;
   }
   onSubmit() {
-    let date = this.catalogueForm.value.newspaperPageNum;
+    let date = this.catalogueForm.value.newspaperReleaseDate;
     let dateValidator = new ValidatorDateServiceService();
     if (dateValidator.validate_date(date)) {
       this.catalogue = new NewspaperCatalogue(
         this.catalogueForm.value.newspaperName,
         this.catalogueForm.value.newspaperNumber,
         this.catalogueForm.value.newspaperReleaseDate,
-        this.catalogueForm.value.newspaperPageNum
+        this.catalogueForm.value.newspaperPageNum,
+        this.catalogueForm.value.articles
       );
+      console.log(this.catalogue);
+    }
+    else if (date === '') {
+      this.dateAlert("Date can't be empty!");
     }
     else {
       this.dateAlert("The release date can't be future!");
     }
+
   }
   ngOnInit() { }
 
