@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { NewspaperCatalogue } from './Class/newspaper_cataloge';
 import { AlertController } from '@ionic/angular';
 import dateValidator from './service/dateValidator';
-import { ValidatorDateServiceService } from '../services/validator-date-service.service';
+import { ValidatorDateService } from '../services/validator-date-service.service';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -38,7 +38,7 @@ export class MyformComponent implements OnInit {
   }
   onSubmit() {
     let date = this.catalogueForm.value.newspaperReleaseDate;
-    let dateValidator = new ValidatorDateServiceService();
+    let dateValidator = new ValidatorDateService();
     if (dateValidator.validate_date(date)) {
       this.catalogue = new NewspaperCatalogue(
         this.catalogueForm.value.newspaperName,

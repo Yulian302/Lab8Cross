@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-import { ValidatorDateServiceService } from './validator-date-service.service';
+import { ValidatorDateService } from './validator-date-service.service';
 import stringToDate from '../myform/service/StringToData';
 
 describe('ValidatorDateServiceService', () => {
-  let service: ValidatorDateServiceService;
+  let service: ValidatorDateService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ValidatorDateServiceService);
+    service = TestBed.inject(ValidatorDateService);
   });
 
   it('should be created', () => {

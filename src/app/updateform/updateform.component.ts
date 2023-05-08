@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { NewspaperCatalogue } from '../myform/Class/newspaper_cataloge';
 import { EventEmitter } from '@angular/core';
-import { ValidatorDateServiceService } from '../services/validator-date-service.service';
+import { ValidatorDateService } from '../services/validator-date-service.service';
 
 @Component({
   selector: 'app-updateform',
@@ -19,7 +19,7 @@ export class UpdateformComponent implements OnInit {
 
   ngOnInit() { }
   validate_date(d: string): boolean {
-    let validator = new ValidatorDateServiceService();
+    let validator = new ValidatorDateService();
     if (d) {
       if (!validator.validate_date(d)) {
         return false;

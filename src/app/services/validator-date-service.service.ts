@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ValidatorDateServiceService {
+export class ValidatorDateService {
 
   validate_date(value: string) {
     let arrD: string[] = value.split(/[.-/]/);
