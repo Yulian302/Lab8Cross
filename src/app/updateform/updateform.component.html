@@ -1,7 +1,7 @@
 <ion-card>
   <ion-card-header>
     <ion-card-title>
-      <ion-input label="Newspaper title:" [value]="newspaper.name" #InputName></ion-input>
+      <ion-input label="Newspaper title:" [value]="newspaper.title" #InputTitle></ion-input>
     </ion-card-title>
     <ion-card-subtitle>
       <ion-input label="Number:" [value]="newspaper.num" #InputNumber></ion-input>
@@ -9,7 +9,7 @@
       <ion-input label="Page number:" [value]="newspaper.page_num" #InputPageNum></ion-input>
     </ion-card-subtitle>
   </ion-card-header>
-  <ion-button (click)="save(InputName.value,InputNumber.value,InputRelDate.value,InputPageNum.value)">
+  <ion-button (click)="save(InputTitle.value,InputNumber.value,InputRelDate.value,InputPageNum.value)">
     Save
   </ion-button>
 </ion-card>

@@ -17,7 +17,7 @@ export class MyformComponent implements OnInit {
   @Output() newspaperAdd: EventEmitter<NewspaperCatalogue> = new EventEmitter<NewspaperCatalogue>();
   constructor(private fb: FormBuilder, private alertController: AlertController) {
     this.catalogueForm = this.fb.group({
-      newspaperName: ['', [Validators.required]],
+      newspaperTitle: ['', [Validators.required]],
       newspaperNumber: ['', [Validators.required, Validators.min(0)]],
       newspaperReleaseDate: ['', [dateValidator()]],
       newspaperPageNum: ['', [Validators.required, Validators.min(1)]],
@@ -41,7 +41,7 @@ export class MyformComponent implements OnInit {
     let dateValidator = new ValidatorDateService();
     if (dateValidator.validate_date(date)) {
       this.catalogue = new NewspaperCatalogue(
-        this.catalogueForm.value.newspaperName,
+        this.catalogueForm.value.newspaperTitle,
         this.catalogueForm.value.newspaperNumber,
         this.catalogueForm.value.newspaperReleaseDate,
         this.catalogueForm.value.newspaperPageNum,

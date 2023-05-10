@@ -30,7 +30,7 @@ export class UpdateformComponent implements OnInit {
     }
     else return true;
   }
-  save(name: any, number: any, rel_date: any, p_num: any) {
+  save(title: any, number: any, rel_date: any, p_num: any) {
     this.show = false;
     if (!this.validate_date(rel_date)) {
       throw new Error('Date error');
@@ -38,7 +38,7 @@ export class UpdateformComponent implements OnInit {
     if (number < 0 || p_num < 0) {
       throw new Error('Number cant be less than zero!');
     }
-    this.newspaper = new NewspaperCatalogue(name, number, rel_date, p_num, this.newspaper.articles);
+    this.newspaper = new NewspaperCatalogue(title, number, rel_date, p_num, this.newspaper.articles);
     this.newspaperChange.emit(this.newspaper);
     this.showChange.emit(this.show);
   }
