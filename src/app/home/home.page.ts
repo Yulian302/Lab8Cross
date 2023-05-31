@@ -6,8 +6,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  @Input() pointsChange: EventEmitter<number> = new EventEmitter<number>();
-  
+  receivedFormData: any;
+  receivedFormDataX: any;
+  showDataDisplay: boolean = false;
+  displayedResult: any;
+  onFormData(formData: any) {
+    this.receivedFormData = formData;
+    this.showDataDisplay = true;
+  }
+  onFormDataX(form:any){
+    this.receivedFormDataX = form;
+  }
+  onResult(result: any) {
+    this.displayedResult = result;
+    console.log(this.displayedResult);
+  }
   constructor() {}
 
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MyHeaderComponent } from './my-header/my-header.component';
+import { MyHeaderComponent } from './my-header.component';
 import { IonicModule } from '@ionic/angular';
 
 @NgModule({

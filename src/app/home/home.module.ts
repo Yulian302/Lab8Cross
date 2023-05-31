@@ -4,8 +4,10 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { HeaderModule } from '../components/header.module';
+import { HeaderModule } from '../components/my-header/header.module';
 import { FormModule } from '../components/form/form.module';
+import { DisplayResultModule } from '../display-result/display-result.module';
+import { SecondFormModule } from '../second-form/second-form.module';
 
 @NgModule({
   imports: [
@@ -14,7 +16,9 @@ import { FormModule } from '../components/form/form.module';
     IonicModule,
     HomePageRoutingModule,
     HeaderModule,
-    FormModule
+    FormModule,
+    DisplayResultModule,
+    SecondFormModule
   ],
   declarations: [HomePage],
   exports: [HomePage]

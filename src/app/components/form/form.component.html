@@ -1,18 +1,17 @@
-<ion-content [fullscreen]="true">
+<form [formGroup]="form" (ngSubmit)="submitForm()">
   <ion-item>
-    <ion-label position="stacked">Input N:</ion-label>
-    <ion-input type="number" placeholder="N" #Inputn></ion-input>
-    <ion-button expand="block" fill="clear" shape="round" (click)="submitN(Inputn.value)">
-      Submit
-    </ion-button>
+    <ion-label>N:</ion-label>
+    <ion-input formControlName="N" placeholder="Enter the number of constants (3 or 4)"></ion-input>
   </ion-item>
-
-  <ng-container *ngIf="points > 0">
-    <ion-item *ngFor="let _ of points; let i=index">
-      <ion-label>X:</ion-label>
-      <ion-input type="number" placeholder="X" [formControl]="xInputs.controls[i]"></ion-input>
-      <ion-label>Y:</ion-label>
-      <ion-input type="number" placeholder="Y" [formControl]="yInputs.controls[i]"></ion-input>
-    </ion-item>
-  </ng-container>
-</ion-content>
+  <div *ngIf="form.get('N')?.invalid && form.get('N')?.touched">
+    <ion-text color="danger" *ngIf="form.get('N')?.errors?.['required']">N is required.</ion-text>
+  </div>
+  <ion-item>
+    <ion-label>X:</ion-label>
+    <ion-input formControlName="X" placeholder="Enter X"></ion-input>
+  </ion-item>
+  <div *ngIf="form.get('X')?.invalid && form.get('X')?.touched">
+    <ion-text color="danger" *ngIf="form.get('X')?.errors?.['required']">X is required.</ion-text>
+  </div>
+  <ion-button expand="full" type="submit" [disabled]="form.invalid">Submit</ion-button>
+</form>

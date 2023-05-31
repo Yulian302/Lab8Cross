@@ -1,0 +1,44 @@
+<ion-item>
+  <ion-label>You have chosen N = {{ N }} and X = {{ X }}</ion-label>
+</ion-item>
+
+<div *ngIf="N==3">
+  <form [formGroup]="form" (ngSubmit)="submitForm">
+    <ion-item>
+      <ion-label>a:</ion-label>
+      <ion-input formControlName="a" placeholder="Enter value for a"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>b:</ion-label>
+      <ion-input formControlName="b" placeholder="Enter value for b"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>c:</ion-label>
+      <ion-input formControlName="c" placeholder="Enter value for c"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="block" fill="clear" shape="round" (click)="submitQuad()">
+      Submit
+    </ion-button>
+  </form>
+</div>
+
+<div *ngIf="N==4"><ion-item>
+    <ion-label>a:</ion-label>
+    <ion-input formControlName="a" placeholder="Enter value for a"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>b:</ion-label>
+    <ion-input formControlName="b" placeholder="Enter value for b"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>c:</ion-label>
+    <ion-input formControlName="c" placeholder="Enter value for c"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>d:</ion-label>
+    <ion-input formControlName="d" placeholder="Enter value for d"></ion-input>
+  </ion-item>
+  <ion-button type="submit" expand="block" fill="clear" shape="round" (click)="submitPoly()">
+    Submit
+  </ion-button>
+</div>
