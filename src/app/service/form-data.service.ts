@@ -9,7 +9,7 @@ export class FormDataService {
       let a =Number(formData.a);
       let b =Number(formData.b);
       let c =Number(formData.c);
-      let d =Number(formData.c);
+      let d =Number(formData.d);
       let x_ =Number(x);
       return (
         a * x_ * x_ * x_ +
