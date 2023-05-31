@@ -6,14 +6,23 @@ import { Injectable } from '@angular/core';
 export class FormDataService {
   getResult(formData: any, x: number) : number{
     if (formData.d) {
+      let a =Number(formData.a);
+      let b =Number(formData.b);
+      let c =Number(formData.c);
+      let d =Number(formData.c);
+      let x_ =Number(x);
       return (
-        formData.a * x * x * x +
-        formData.b * x * x +
-        formData.c * x +
-        formData.d
+        a * x_ * x_ * x_ +
+        b * x_ * x_ +
+        c * x_ +
+        d
       );
     } else {
-      return formData.a * x * x + formData.b * x + formData.c;
+      let a =Number(formData.a);
+      let b =Number(formData.b);
+      let c =Number(formData.c);
+      let x_ =Number(x);
+      return a * x_ * x_ + b * x_ + c;
     }
   }
   constructor() {}

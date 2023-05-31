@@ -38,7 +38,6 @@ export class SecondFormComponent implements OnInit {
 
   submitForm() {
     if (this.form.valid) {
-      this.X = 2;
       if(this.N==3){
         this.submitQuad();
       }
