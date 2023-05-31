@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="stacked">Input N:</ion-label>
+    <ion-input type="number" placeholder="N" #Inputn></ion-input>
+    <ion-button expand="block" fill="clear" shape="round" (click)="submitN(Inputn.value)">
+      Submit
+    </ion-button>
+  </ion-item>
+
+  <ng-container *ngIf="points > 0">
+    <ion-item *ngFor="let _ of points; let i=index">
+      <ion-label>X:</ion-label>
+      <ion-input type="number" placeholder="X" [formControl]="xInputs.controls[i]"></ion-input>
+      <ion-label>Y:</ion-label>
+      <ion-input type="number" placeholder="Y" [formControl]="yInputs.controls[i]"></ion-input>
+    </ion-item>
+  </ng-container>
+</ion-content>
