@@ -19,7 +19,7 @@ describe('FormDataService', () => {
     const quad = { a: 5, b: 3, c: 2 };
     const x = 2;
     const expectedResult = 28;
-    expect(service.getResult(quad, x)).toEqual(expectedResult);
+    expect(service.getResult(quad, x,true)).toEqual(expectedResult);
   });
 
   it('Validating service for poly', () => {
@@ -27,6 +27,6 @@ describe('FormDataService', () => {
     const quad = { a: 5, b: 3, c: 2, d: 3 };
     const x = 2;
     const expectedResult = 59;
-    expect(service.getResult(quad, x)).toEqual(expectedResult);
+    expect(service.getResult(quad, x,false)).toEqual(expectedResult);
   });
 });

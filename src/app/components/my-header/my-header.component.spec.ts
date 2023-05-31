@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { NgModule } from '@angular/core';
 import { MyHeaderComponent } from './my-header.component';
 
 describe('MyHeaderComponent', () => {

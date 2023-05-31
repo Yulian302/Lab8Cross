@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FormDataService {
-  getResult(formData: any, x: number) : number{
-    if (formData.d) {
+  getResult(formData: any, x: number,quad:boolean) : number{
+    if (!quad) {
       let a =Number(formData.a);
       let b =Number(formData.b);
       let c =Number(formData.c);

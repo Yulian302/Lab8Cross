@@ -31,14 +31,14 @@ export class SecondFormComponent implements OnInit {
   }
 
   isQuad() {
-    return Number(this.N) === 3;
+    return Number(this.N) == 3;
   }
 
   ngOnInit() {}
 
   submitForm() {
     if (this.form.valid) {
-      if(this.N==3){
+      if(this.N == 3){
         this.submitQuad();
       }
       else{
@@ -50,12 +50,12 @@ export class SecondFormComponent implements OnInit {
   }
 
   submitQuad() {
-    const result = this.formDataService.getResult(this.form.value, this.X);
+    const result = this.formDataService.getResult(this.form.value, this.X, true);
     this.result.emit(result);
   }
 
   submitPoly() {
-    const result = this.formDataService.getResult(this.form.value, this.X);
+    const result = this.formDataService.getResult(this.form.value, this.X, false);
     this.result.emit(result);
   }
 }
